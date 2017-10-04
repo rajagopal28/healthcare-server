@@ -1,0 +1,57 @@
+<%= form_with(model: doctor, local: true) do |form| %>
+  <% if doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+      <ul>
+      <% doctor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :doctor_first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :doctor_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :doctor_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username, id: :doctor_username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :doctor_password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address, id: :doctor_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :primary_practice %>
+    <%= form.text_field :primary_practice, id: :doctor_primary_practice %>
+  </div>
+
+  <div class="field">
+    <%= form.label :secondary_practice %>
+    <%= form.text_field :secondary_practice, id: :doctor_secondary_practice %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
