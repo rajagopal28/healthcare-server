@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  type: 
+  is_acidic: false
+  infant_safe: false
+
+two:
+  name: MyString
+  description: MyText
+  type: 
+  is_acidic: false
+  infant_safe: false

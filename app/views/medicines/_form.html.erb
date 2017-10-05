@@ -1,0 +1,42 @@
+<%= form_with(model: medicine, local: true) do |form| %>
+  <% if medicine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
+
+      <ul>
+      <% medicine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :medicine_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :medicine_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type, id: :medicine_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_acidic %>
+    <%= form.check_box :is_acidic, id: :medicine_is_acidic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :infant_safe %>
+    <%= form.check_box :infant_safe, id: :medicine_infant_safe %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
