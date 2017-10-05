@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  doctor: one
+  notes: MyText
+  prescribed_on: 2017-10-05 21:55:29
+  valid_till: 2017-10-05 21:55:29
+
+two:
+  user: two
+  doctor: two
+  notes: MyText
+  prescribed_on: 2017-10-05 21:55:29
+  valid_till: 2017-10-05 21:55:29
