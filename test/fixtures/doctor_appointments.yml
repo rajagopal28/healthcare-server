@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  from: 2017-10-04 22:45:50
+  to: 2017-10-04 22:45:50
+  doctor: 
+  user: 
+
+two:
+  description: MyText
+  from: 2017-10-04 22:45:50
+  to: 2017-10-04 22:45:50
+  doctor: 
+  user: 

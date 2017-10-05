@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @doctor_appointment.description %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @doctor_appointment.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @doctor_appointment.to %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @doctor.first_name%>&nbsp;<%= @doctor.last_name%>
+  (Id:<%= @doctor_appointment.doctor_id %>)
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user.first_name%>&nbsp;<%= @user.last_name%>
+  (Id:<%= @doctor_appointment.user_id %>)
+</p>
+
+<%= link_to 'Edit', edit_doctor_appointment_path(@doctor_appointment) %> |
+<%= link_to 'Back', doctor_appointments_path %>

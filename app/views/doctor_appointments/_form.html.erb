@@ -1,0 +1,42 @@
+<%= form_with(model: doctor_appointment, local: true) do |form| %>
+  <% if doctor_appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doctor_appointment.errors.count, "error") %> prohibited this doctor_appointment from being saved:</h2>
+
+      <ul>
+      <% doctor_appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :doctor_appointment_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from %>
+    <%= form.datetime_select :from, id: :doctor_appointment_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to %>
+    <%= form.datetime_select :to, id: :doctor_appointment_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor_id %>
+    <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
