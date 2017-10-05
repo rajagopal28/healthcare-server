@@ -67,8 +67,6 @@ class DoctorAppointmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor_appointment
       @doctor_appointment = DoctorAppointment.find(params[:id])
-      @doctor = Doctor.find(@doctor_appointment.doctor_id)
-      @user = User.find(@doctor_appointment.user_id)
     end
 
     def set_doctors_and_users

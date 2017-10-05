@@ -17,13 +17,13 @@
 
 <p>
   <strong>Doctor:</strong>
-  <%= @doctor.first_name%>&nbsp;<%= @doctor.last_name%>
+  <%= @doctor_appointment.doctor.first_name%>&nbsp;<%= @doctor_appointment.doctor.last_name%>
   (Id:<%= @doctor_appointment.doctor_id %>)
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @user.first_name%>&nbsp;<%= @user.last_name%>
+  <%= @doctor_appointment.user.first_name%>&nbsp;<%= @doctor_appointment.user.last_name%>
   (Id:<%= @doctor_appointment.user_id %>)
 </p>
 
