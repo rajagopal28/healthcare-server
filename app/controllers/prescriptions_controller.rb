@@ -14,11 +14,13 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
+    set_doctors_and_users
     @prescription = Prescription.new
   end
 
   # GET /prescriptions/1/edit
   def edit
+    set_doctors_and_users
   end
 
   # POST /prescriptions
@@ -65,6 +67,11 @@ class PrescriptionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_prescription
       @prescription = Prescription.find(params[:id])
+    end
+
+    def set_doctors_and_users
+      @doctors = Doctor.all
+      @users = User.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

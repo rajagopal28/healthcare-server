@@ -17,8 +17,8 @@
   <tbody>
     <% @prescriptions.each do |prescription| %>
       <tr>
-        <td><%= prescription.user %></td>
-        <td><%= prescription.doctor %></td>
+        <td><%= prescription.user.first_name%>&nbsp;<%= prescription.user.last_name%></td>
+        <td><%= prescription.doctor.first_name%>&nbsp;<%= prescription.doctor.last_name%></td>
         <td><%= prescription.notes %></td>
         <td><%= prescription.prescribed_on %></td>
         <td><%= prescription.valid_till %></td>

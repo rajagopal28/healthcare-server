@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @prescription.user %>
+  <%= @prescription.user .first_name%>&nbsp;<%=@prescription.user.last_name%>
 </p>
 
 <p>
   <strong>Doctor:</strong>
-  <%= @prescription.doctor %>
+  <%= @prescription.doctor.first_name%>&nbsp;<%= @prescription.doctor.last_name%>
 </p>
 
 <p>
@@ -27,13 +27,30 @@
 <h3>Prescribed Medicines</h3>
 <table>
   <thead>
-    <th>Notes</th>
+    <tr>
+      <th>Medicine</th>
+      <th>Notes</th>
+      <th>Before breakfast</th>
+      <th>After breakfast</th>
+      <th>Before lunch</th>
+      <th>After lunch</th>
+      <th>Before dinner</th>
+      <th>After dinner</th>
+      <th colspan="3"></th>
+    </tr>
   </thead>
   <tbody>
     <% @prescription.prescribed_medicines.each do |pm| %>
-  <tr>
-    <td><%= pm.notes %></td>
-    </tr>
+      <tr>
+        <td><%= pm.medicine.name %></td>
+        <td><%= pm.notes %></td>
+        <td><%= pm.before_breakfast %></td>
+        <td><%= pm.after_breakfast %></td>
+        <td><%= pm.before_lunch %></td>
+        <td><%= pm.after_lunch %></td>
+        <td><%= pm.before_dinner %></td>
+        <td><%= pm.after_dinner %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

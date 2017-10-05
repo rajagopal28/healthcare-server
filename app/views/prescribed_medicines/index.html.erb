@@ -21,8 +21,8 @@
   <tbody>
     <% @prescribed_medicines.each do |prescribed_medicine| %>
       <tr>
-        <td><%= prescribed_medicine.medicine %></td>
-        <td><%= prescribed_medicine.prescription %></td>
+        <td><%= prescribed_medicine.medicine.name %></td>
+        <td><%= prescribed_medicine.prescription.notes %></td>
         <td><%= prescribed_medicine.notes %></td>
         <td><%= prescribed_medicine.before_breakfast %></td>
         <td><%= prescribed_medicine.after_breakfast %></td>
