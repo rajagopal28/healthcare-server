@@ -1,0 +1,62 @@
+<%= form_with(model: prescribed_medicine, local: true) do |form| %>
+  <% if prescribed_medicine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prescribed_medicine.errors.count, "error") %> prohibited this prescribed_medicine from being saved:</h2>
+
+      <ul>
+      <% prescribed_medicine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :medicine_id %>
+    <%= form.text_field :medicine_id, id: :prescribed_medicine_medicine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prescription_id %>
+    <%= form.text_field :prescription_id, id: :prescribed_medicine_prescription_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :prescribed_medicine_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :before_breakfast %>
+    <%= form.check_box :before_breakfast, id: :prescribed_medicine_before_breakfast %>
+  </div>
+
+  <div class="field">
+    <%= form.label :after_breakfast %>
+    <%= form.check_box :after_breakfast, id: :prescribed_medicine_after_breakfast %>
+  </div>
+
+  <div class="field">
+    <%= form.label :before_lunch %>
+    <%= form.check_box :before_lunch, id: :prescribed_medicine_before_lunch %>
+  </div>
+
+  <div class="field">
+    <%= form.label :after_lunch %>
+    <%= form.check_box :after_lunch, id: :prescribed_medicine_after_lunch %>
+  </div>
+
+  <div class="field">
+    <%= form.label :before_dinner %>
+    <%= form.check_box :before_dinner, id: :prescribed_medicine_before_dinner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :after_dinner %>
+    <%= form.check_box :after_dinner, id: :prescribed_medicine_after_dinner %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

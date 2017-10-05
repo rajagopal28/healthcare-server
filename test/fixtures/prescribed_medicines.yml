@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medicine: one
+  prescription: one
+  notes: MyText
+  before_breakfast: false
+  after_breakfast: false
+  before_lunch: false
+  after_lunch: false
+  before_dinner: false
+  after_dinner: false
+
+two:
+  medicine: two
+  prescription: two
+  notes: MyText
+  before_breakfast: false
+  after_breakfast: false
+  before_lunch: false
+  after_lunch: false
+  before_dinner: false
+  after_dinner: false
