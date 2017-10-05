@@ -24,6 +24,19 @@
   <strong>Valid till:</strong>
   <%= @prescription.valid_till %>
 </p>
+<h3>Prescribed Medicines</h3>
+<table>
+  <thead>
+    <th>Notes</th>
+  </thead>
+  <tbody>
+    <% @prescription.prescribed_medicines.each do |pm| %>
+  <tr>
+    <td><%= pm.notes %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
 <%= link_to 'Back', prescriptions_path %>
