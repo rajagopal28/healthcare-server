@@ -16,7 +16,7 @@
   <tbody>
     <% @user_vital_logs.each do |user_vital_log| %>
       <tr>
-        <td><%= user_vital_log.user %></td>
+        <td><%= user_vital_log.user.first_name %> <%= user_vital_log.user.last_name %></td>
         <td><%= user_vital_log.logged_on %></td>
         <td><%= user_vital_log.notes %></td>
         <td><%= user_vital_log.vital_name %></td>

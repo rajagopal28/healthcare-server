@@ -1,5 +1,6 @@
 class UserVitalLogsController < ApplicationController
   before_action :set_user_vital_log, only: [:show, :edit, :update, :destroy]
+  before_action :set_users, only: [:new, :edit]
 
   # GET /user_vital_logs
   # GET /user_vital_logs.json
@@ -67,6 +68,9 @@ class UserVitalLogsController < ApplicationController
       @user_vital_log = UserVitalLog.find(params[:id])
     end
 
+    def set_users
+      @users = User.all
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_vital_log_params
       params.require(:user_vital_log).permit(:user_id, :logged_on, :notes, :vital_name)
