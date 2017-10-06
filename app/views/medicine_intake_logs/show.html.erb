@@ -2,12 +2,12 @@
 
 <p>
   <strong>Prescribed medicine:</strong>
-  <%= @medicine_intake_log.prescribed_medicine %>
+  <%= @medicine_intake_log.prescribed_medicine.medicine.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @medicine_intake_log.user %>
+  <%= @medicine_intake_log.user.first_name %> <%= @medicine_intake_log.user.last_name %>
 </p>
 
 <p>

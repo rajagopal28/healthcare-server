@@ -17,8 +17,8 @@
   <tbody>
     <% @medicine_intake_logs.each do |medicine_intake_log| %>
       <tr>
-        <td><%= medicine_intake_log.prescribed_medicine %></td>
-        <td><%= medicine_intake_log.user %></td>
+        <td><%= medicine_intake_log.prescribed_medicine.medicine.name %> for: <%= medicine_intake_log.prescribed_medicine.prescription.notes %></td>
+        <td><%= medicine_intake_log.user.first_name %>&nbsp;<%= medicine_intake_log.user.last_name %></td>
         <td><%= medicine_intake_log.logged_on %></td>
         <td><%= medicine_intake_log.notes %></td>
         <td><%= medicine_intake_log.part_of_day %></td>

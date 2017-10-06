@@ -1,5 +1,6 @@
 class MedicineIntakeLogsController < ApplicationController
   before_action :set_medicine_intake_log, only: [:show, :edit, :update, :destroy]
+  before_action :set_users_and_meds, only: [:new, :edit]
 
   # GET /medicine_intake_logs
   # GET /medicine_intake_logs.json
@@ -65,6 +66,11 @@ class MedicineIntakeLogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_medicine_intake_log
       @medicine_intake_log = MedicineIntakeLog.find(params[:id])
+    end
+
+    def set_users_and_meds
+      @users = User.all
+      @prescribed_medicines = PrescribedMedicine.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
