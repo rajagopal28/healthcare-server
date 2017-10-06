@@ -174,9 +174,9 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara (~> 2.13)
-  chartkick
+  chartkick (>= 2.2.4)
   coffee-rails (~> 4.2)
-  groupdate
+  groupdate (>= 3.2.0)
   jbuilder (~> 2.5)
   pg (~> 0.18)
   puma (~> 3.7)
