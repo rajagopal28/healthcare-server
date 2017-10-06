@@ -1,4 +1,4 @@
-<%= form_with(model: medicine,class: 'pure-form', local: true) do |form| %>
+<%= form_with(model: medicine, class: 'pure-form pure-form-aligned', local: true) do |form| %>
   <% if medicine.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :medicine_name %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :description %>
     <%= form.text_area :description, id: :medicine_description %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :medicine_type %>
     <%= form.text_field :medicine_type, id: :medicine__medicine_type %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :is_acidic %>
     <%= form.check_box :is_acidic, id: :medicine_is_acidic %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :infant_safe %>
     <%= form.check_box :infant_safe, id: :medicine_infant_safe %>
   </div>

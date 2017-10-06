@@ -1,4 +1,4 @@
-<%= form_with(model: doctor_notification,class: 'pure-form', local: true) do |form| %>
+<%= form_with(model: doctor_notification, class: 'pure-form pure-form-aligned', local: true) do |form| %>
   <% if doctor_notification.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(doctor_notification.errors.count, "error") %> prohibited this doctor_notification from being saved:</h2>
@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :title %>
     <%= form.text_field :title, id: :doctor_notification_title %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :doctor_id %>
     <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name+' '+d.last_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :user_id %>
     <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :notified_on %>
     <%= form.datetime_select :notified_on, id: :doctor_notification_notified_on %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :notes %>
     <%= form.text_area :notes, id: :doctor_notification_notes %>
   </div>
 
-  <div class="field">
+  <div class="field pure-control-group">
     <%= form.label :severity %>
     <%= form.text_field :severity, id: :doctor_notification_severity %>
   </div>
