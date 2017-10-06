@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :doctor_id %>
-    <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
+    <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name+' '+d.last_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
+    <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
   </div>
 
   <div class="field">
