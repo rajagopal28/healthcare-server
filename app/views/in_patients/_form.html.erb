@@ -1,0 +1,47 @@
+<%= form_with(model: in_patient, local: true) do |form| %>
+  <% if in_patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(in_patient.errors.count, "error") %> prohibited this in_patient from being saved:</h2>
+
+      <ul>
+      <% in_patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :in_patient_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor_id %>
+    <%= form.text_field :doctor_id, id: :in_patient_doctor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :visting_since %>
+    <%= form.datetime_select :visting_since, id: :in_patient_visting_since %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :in_patient_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :in_patient_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :for_practice %>
+    <%= form.text_field :for_practice, id: :in_patient_for_practice %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
