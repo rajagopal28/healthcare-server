@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Doctor Appointments</h1>
-
+<% if @user %>
+  <h3>User: <%= @user.first_name %>&nbsp;<%= @user.last_name %></h3>
+<% end %>
+<% if @doctor %>
+  <h3>Doctor: <%= @doctor.first_name %>&nbsp;<%= @doctor.last_name %></h3>
+<% end %>
 <table class="pure-table pure-table-bordered">
   <thead>
     <tr class="<%= cycle('pure-table-odd', '') -%>">

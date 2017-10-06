@@ -1,11 +1,20 @@
 class DoctorAppointmentsController < ApplicationController
   before_action :set_doctor_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors_and_users, only: [:new, :edit]
+  before_action :set_doctor_user_from_session, only: [:index, :new]
 
   # GET /doctor_appointments
   # GET /doctor_appointments.json
   def index
-    @doctor_appointments = DoctorAppointment.all
+    if @doctor && @user
+      @doctor_appointments = DoctorAppointment.where(user_id: @user.id, doctor_id: @doctor.id)
+    elsif @user
+      @doctor_appointments = DoctorAppointment.where(user_id: @user.id)
+    elsif @doctor
+      @doctor_appointments = DoctorAppointment.where(doctor_id: @doctor.id)
+    else
+      @doctor_appointments = DoctorAppointment.all
+    end
   end
 
   # GET /doctor_appointments/1
@@ -71,6 +80,32 @@ class DoctorAppointmentsController < ApplicationController
     def set_doctors_and_users
       @doctors = Doctor.all
       @users = User.all
+    end
+
+    def set_doctor_user_from_session
+      #initialise ids
+      doctor_id = nil
+      user_id = nil
+
+      # find user
+      if session[:user_id]
+        user_id = session[:user_id]
+      elsif request.query_parameters['userId']
+        user_id = request.query_parameters['userId']
+      end
+      if user_id
+        @user = User.find(user_id)
+      end
+
+      # find doctor
+      if session[:doctor_id]
+        doctor_id = session[:doctor_id]
+      elsif request.query_parameters['doctorId']
+        doctor_id = request.query_parameters['doctorId']
+      end
+      if doctor_id
+        @doctor = Doctor.find(doctor_id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
