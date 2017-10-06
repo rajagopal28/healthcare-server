@@ -1,6 +1,6 @@
 class PrescribedMedicinesController < ApplicationController
   before_action :set_prescribed_medicine, only: [:show, :edit, :update, :destroy]
-  before_action :set_medicines, only: [:new, :edit]
+  before_action :set_medicines_and_prescriptions, only: [:new, :edit]
 
   # GET /prescribed_medicines
   # GET /prescribed_medicines.json
@@ -68,8 +68,9 @@ class PrescribedMedicinesController < ApplicationController
       @prescribed_medicine = PrescribedMedicine.find(params[:id])
     end
 
-    def set_medicines
+    def set_medicines_and_prescriptions
       @medicines = Medicine.all
+      @prescriptions = Prescription.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
