@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006080707) do
+ActiveRecord::Schema.define(version: 20171006082610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20171006080707) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_in_patients_on_doctor_id"
     t.index ["user_id"], name: "index_in_patients_on_user_id"
+  end
+
+  create_table "medicine_intake_logs", force: :cascade do |t|
+    t.bigint "prescribed_medicine_id"
+    t.bigint "user_id"
+    t.datetime "logged_on"
+    t.text "notes"
+    t.string "part_of_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescribed_medicine_id"], name: "index_medicine_intake_logs_on_prescribed_medicine_id"
+    t.index ["user_id"], name: "index_medicine_intake_logs_on_user_id"
   end
 
   create_table "medicines", force: :cascade do |t|
@@ -130,6 +142,8 @@ ActiveRecord::Schema.define(version: 20171006080707) do
   add_foreign_key "doctor_notifications", "users"
   add_foreign_key "in_patients", "doctors"
   add_foreign_key "in_patients", "users"
+  add_foreign_key "medicine_intake_logs", "prescribed_medicines"
+  add_foreign_key "medicine_intake_logs", "users"
   add_foreign_key "prescribed_medicines", "medicines"
   add_foreign_key "prescribed_medicines", "prescriptions"
   add_foreign_key "prescriptions", "doctors"
