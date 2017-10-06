@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @doctor_notification.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @doctor_notification.user %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @doctor_notification.doctor %>
+</p>
+
+<p>
+  <strong>Notified on:</strong>
+  <%= @doctor_notification.notified_on %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @doctor_notification.notes %>
+</p>
+
+<p>
+  <strong>Severity:</strong>
+  <%= @doctor_notification.severity %>
+</p>
+
+<%= link_to 'Edit', edit_doctor_notification_path(@doctor_notification) %> |
+<%= link_to 'Back', doctor_notifications_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  user: one
+  doctor: one
+  notified_on: 2017-10-06 13:30:47
+  notes: MyText
+  severity: MyString
+
+two:
+  title: MyString
+  user: two
+  doctor: two
+  notified_on: 2017-10-06 13:30:47
+  notes: MyText
+  severity: MyString

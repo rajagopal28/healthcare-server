@@ -1,0 +1,47 @@
+<%= form_with(model: doctor_notification, local: true) do |form| %>
+  <% if doctor_notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doctor_notification.errors.count, "error") %> prohibited this doctor_notification from being saved:</h2>
+
+      <ul>
+      <% doctor_notification.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :doctor_notification_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :doctor_notification_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor_id %>
+    <%= form.text_field :doctor_id, id: :doctor_notification_doctor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notified_on %>
+    <%= form.datetime_select :notified_on, id: :doctor_notification_notified_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :doctor_notification_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :severity %>
+    <%= form.text_field :severity, id: :doctor_notification_severity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
