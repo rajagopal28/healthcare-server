@@ -1,5 +1,6 @@
 class DoctorNotificationsController < ApplicationController
   before_action :set_doctor_notification, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors_and_users, only: [:new, :edit]
 
   # GET /doctor_notifications
   # GET /doctor_notifications.json
@@ -65,6 +66,11 @@ class DoctorNotificationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor_notification
       @doctor_notification = DoctorNotification.find(params[:id])
+    end
+
+    def set_doctors_and_users
+      @doctors = Doctor.all
+      @users = User.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

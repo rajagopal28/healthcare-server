@@ -19,8 +19,8 @@
     <% @doctor_notifications.each do |doctor_notification| %>
       <tr>
         <td><%= doctor_notification.title %></td>
-        <td><%= doctor_notification.user %></td>
-        <td><%= doctor_notification.doctor %></td>
+        <td><%= doctor_notification.user.first_name %>&nbsp;<%= doctor_notification.user.last_name %></td>
+        <td><%= doctor_notification.doctor.first_name %>&nbsp;<%= doctor_notification.doctor.last_name %></td>
         <td><%= doctor_notification.notified_on %></td>
         <td><%= doctor_notification.notes %></td>
         <td><%= doctor_notification.severity %></td>

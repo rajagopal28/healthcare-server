@@ -7,12 +7,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @doctor_notification.user %>
+  <%= @doctor_notification.user.first_name %>&nbsp;<%= @doctor_notification.user.last_name %>
 </p>
 
 <p>
   <strong>Doctor:</strong>
-  <%= @doctor_notification.doctor %>
+  <%= @doctor_notification.doctor.first_name %>&nbsp;<%= @doctor_notification.doctor.last_name %>
 </p>
 
 <p>
