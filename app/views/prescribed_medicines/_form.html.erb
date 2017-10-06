@@ -10,11 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :medicine_id %>
-    <%= form.text_field :medicine_id, id: :prescribed_medicine_medicine_id %>
-  </div>
   <div class="field">
     <%= form.label :medicine_id %>
     <%= form.select :medicine_id, options_for_select(@medicines.map{ |m| [m.name, m.id, {'name'=>m.name}] }, selected_key = form.object.medicine_id) %>
