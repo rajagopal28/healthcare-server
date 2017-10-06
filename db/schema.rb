@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005164215) do
+ActiveRecord::Schema.define(version: 20171006080707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20171005164215) do
     t.index ["user_id"], name: "index_doctor_appointments_on_user_id"
   end
 
+  create_table "doctor_notifications", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.bigint "doctor_id"
+    t.datetime "notified_on"
+    t.text "notes"
+    t.string "severity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_doctor_notifications_on_doctor_id"
+    t.index ["user_id"], name: "index_doctor_notifications_on_user_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -38,6 +51,19 @@ ActiveRecord::Schema.define(version: 20171005164215) do
     t.string "secondary_practice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "in_patients", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "doctor_id"
+    t.datetime "visting_since"
+    t.text "notes"
+    t.string "status"
+    t.string "for_practice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_in_patients_on_doctor_id"
+    t.index ["user_id"], name: "index_in_patients_on_user_id"
   end
 
   create_table "medicines", force: :cascade do |t|
@@ -62,6 +88,7 @@ ActiveRecord::Schema.define(version: 20171005164215) do
     t.boolean "after_dinner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "available_count"
     t.index ["medicine_id"], name: "index_prescribed_medicines_on_medicine_id"
     t.index ["prescription_id"], name: "index_prescribed_medicines_on_prescription_id"
   end
@@ -78,6 +105,16 @@ ActiveRecord::Schema.define(version: 20171005164215) do
     t.index ["user_id"], name: "index_prescriptions_on_user_id"
   end
 
+  create_table "user_vital_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "logged_on"
+    t.text "notes"
+    t.string "vital_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_vital_logs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -89,8 +126,13 @@ ActiveRecord::Schema.define(version: 20171005164215) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "doctor_notifications", "doctors"
+  add_foreign_key "doctor_notifications", "users"
+  add_foreign_key "in_patients", "doctors"
+  add_foreign_key "in_patients", "users"
   add_foreign_key "prescribed_medicines", "medicines"
   add_foreign_key "prescribed_medicines", "prescriptions"
   add_foreign_key "prescriptions", "doctors"
   add_foreign_key "prescriptions", "users"
+  add_foreign_key "user_vital_logs", "users"
 end

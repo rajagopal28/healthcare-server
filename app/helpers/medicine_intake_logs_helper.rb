@@ -1,0 +1,2 @@
+module MedicineIntakeLogsHelper
+end

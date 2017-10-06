@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Medicine Intake Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prescribed medicine</th>
+      <th>User</th>
+      <th>Logged on</th>
+      <th>Notes</th>
+      <th>Part of day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicine_intake_logs.each do |medicine_intake_log| %>
+      <tr>
+        <td><%= medicine_intake_log.prescribed_medicine %></td>
+        <td><%= medicine_intake_log.user %></td>
+        <td><%= medicine_intake_log.logged_on %></td>
+        <td><%= medicine_intake_log.notes %></td>
+        <td><%= medicine_intake_log.part_of_day %></td>
+        <td><%= link_to 'Show', medicine_intake_log %></td>
+        <td><%= link_to 'Edit', edit_medicine_intake_log_path(medicine_intake_log) %></td>
+        <td><%= link_to 'Destroy', medicine_intake_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medicine Intake Log', new_medicine_intake_log_path %>

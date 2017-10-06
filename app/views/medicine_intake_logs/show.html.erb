@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prescribed medicine:</strong>
+  <%= @medicine_intake_log.prescribed_medicine %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @medicine_intake_log.user %>
+</p>
+
+<p>
+  <strong>Logged on:</strong>
+  <%= @medicine_intake_log.logged_on %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @medicine_intake_log.notes %>
+</p>
+
+<p>
+  <strong>Part of day:</strong>
+  <%= @medicine_intake_log.part_of_day %>
+</p>
+
+<%= link_to 'Edit', edit_medicine_intake_log_path(@medicine_intake_log) %> |
+<%= link_to 'Back', medicine_intake_logs_path %>

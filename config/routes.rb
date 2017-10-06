@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :medicine_intake_logs
   resources :doctor_notifications
   resources :user_vital_logs
   resources :in_patients

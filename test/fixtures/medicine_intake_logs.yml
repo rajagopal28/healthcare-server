@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prescribed_medicine: one
+  user: one
+  logged_on: 2017-10-06 13:56:10
+  notes: MyText
+  part_of_day: MyString
+
+two:
+  prescribed_medicine: two
+  user: two
+  logged_on: 2017-10-06 13:56:10
+  notes: MyText
+  part_of_day: MyString

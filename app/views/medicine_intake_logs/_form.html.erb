@@ -1,0 +1,42 @@
+<%= form_with(model: medicine_intake_log, local: true) do |form| %>
+  <% if medicine_intake_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medicine_intake_log.errors.count, "error") %> prohibited this medicine_intake_log from being saved:</h2>
+
+      <ul>
+      <% medicine_intake_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :prescribed_medicine_id %>
+    <%= form.text_field :prescribed_medicine_id, id: :medicine_intake_log_prescribed_medicine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :medicine_intake_log_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logged_on %>
+    <%= form.datetime_select :logged_on, id: :medicine_intake_log_logged_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :medicine_intake_log_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :part_of_day %>
+    <%= form.text_field :part_of_day, id: :medicine_intake_log_part_of_day %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
