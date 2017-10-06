@@ -9,6 +9,7 @@
       <th>Logged on</th>
       <th>Notes</th>
       <th>Vital name</th>
+      <th>Vital value</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= user_vital_log.logged_on %></td>
         <td><%= user_vital_log.notes %></td>
         <td><%= user_vital_log.vital_name %></td>
+        <td><%= user_vital_log.vital_value %></td>
         <td><%= link_to 'Show', user_vital_log %></td>
         <td><%= link_to 'Edit', edit_user_vital_log_path(user_vital_log) %></td>
         <td><%= link_to 'Destroy', user_vital_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>

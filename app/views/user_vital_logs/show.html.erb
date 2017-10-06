@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @user_vital_log.user.first_name %> <%= @user_vital_log.user.last_name %> 
+  <%= @user_vital_log.user.first_name %> <%= @user_vital_log.user.last_name %>
 </p>
 
 <p>
@@ -18,6 +18,11 @@
 <p>
   <strong>Vital name:</strong>
   <%= @user_vital_log.vital_name %>
+</p>
+
+<p>
+  <strong>Vital value:</strong>
+  <%= @user_vital_log.vital_value %>
 </p>
 
 <%= link_to 'Edit', edit_user_vital_log_path(@user_vital_log) %> |
