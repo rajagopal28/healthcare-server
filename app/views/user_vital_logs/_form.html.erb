@@ -1,0 +1,37 @@
+<%= form_with(model: user_vital_log, local: true) do |form| %>
+  <% if user_vital_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_vital_log.errors.count, "error") %> prohibited this user_vital_log from being saved:</h2>
+
+      <ul>
+      <% user_vital_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :user_vital_log_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logged_on %>
+    <%= form.datetime_select :logged_on, id: :user_vital_log_logged_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :user_vital_log_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vital_name %>
+    <%= form.text_field :vital_name, id: :user_vital_log_vital_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

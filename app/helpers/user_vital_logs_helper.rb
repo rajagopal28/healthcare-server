@@ -1,0 +1,2 @@
+module UserVitalLogsHelper
+end

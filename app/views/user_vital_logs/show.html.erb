@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_vital_log.user %>
+</p>
+
+<p>
+  <strong>Logged on:</strong>
+  <%= @user_vital_log.logged_on %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @user_vital_log.notes %>
+</p>
+
+<p>
+  <strong>Vital name:</strong>
+  <%= @user_vital_log.vital_name %>
+</p>
+
+<%= link_to 'Edit', edit_user_vital_log_path(@user_vital_log) %> |
+<%= link_to 'Back', user_vital_logs_path %>
