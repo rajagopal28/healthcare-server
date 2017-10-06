@@ -2,9 +2,9 @@
 
 <h1>User Vital Logs</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>User</th>
       <th>Logged on</th>
       <th>Notes</th>
@@ -16,15 +16,15 @@
 
   <tbody>
     <% @user_vital_logs.each do |user_vital_log| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= user_vital_log.user.first_name %> <%= user_vital_log.user.last_name %></td>
         <td><%= user_vital_log.logged_on %></td>
         <td><%= user_vital_log.notes %></td>
         <td><%= user_vital_log.vital_name %></td>
         <td><%= user_vital_log.vital_value %></td>
-        <td><%= link_to 'Show', user_vital_log %></td>
-        <td><%= link_to 'Edit', edit_user_vital_log_path(user_vital_log) %></td>
-        <td><%= link_to 'Destroy', user_vital_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_vital_log , class: 'pure-button  pure-button-primary' %></td>
+        <td><%= link_to 'Edit', edit_user_vital_log_path(user_vital_log), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', user_vital_log, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New User Vital Log', new_user_vital_log_path %>
+<%= link_to 'New User Vital Log', new_user_vital_log_path, class: 'pure-button  button-secondary'  %>

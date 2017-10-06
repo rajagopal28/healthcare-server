@@ -25,9 +25,9 @@
   <%= @prescription.valid_till %>
 </p>
 <h3>Prescribed Medicines</h3>
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>Medicine</th>
       <th>Notes</th>
       <th>Before breakfast</th>
@@ -41,7 +41,7 @@
   </thead>
   <tbody>
     <% @prescription.prescribed_medicines.each do |pm| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= pm.medicine.name %></td>
         <td><%= pm.notes %></td>
         <td><%= pm.before_breakfast %></td>
@@ -55,5 +55,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_prescription_path(@prescription) %> |
-<%= link_to 'Back', prescriptions_path %>
+<%= link_to 'Edit', edit_prescription_path(@prescription), class: 'pure-button  pure-button-primary'  %> |
+<%= link_to 'Back', prescriptions_path, class: 'pure-button  button-secondary'  %>

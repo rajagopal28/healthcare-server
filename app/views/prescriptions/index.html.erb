@@ -2,9 +2,9 @@
 
 <h1>Prescriptions</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>User</th>
       <th>Doctor</th>
       <th>Notes</th>
@@ -16,15 +16,15 @@
 
   <tbody>
     <% @prescriptions.each do |prescription| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= prescription.user.first_name%>&nbsp;<%= prescription.user.last_name%></td>
         <td><%= prescription.doctor.first_name%>&nbsp;<%= prescription.doctor.last_name%></td>
         <td><%= prescription.notes %></td>
         <td><%= prescription.prescribed_on %></td>
         <td><%= prescription.valid_till %></td>
-        <td><%= link_to 'Show', prescription %></td>
-        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
-        <td><%= link_to 'Destroy', prescription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', prescription, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_prescription_path(prescription), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', prescription, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Prescription', new_prescription_path %>
+<%= link_to 'New Prescription', new_prescription_path, class: 'pure-button  button-secondary'  %>

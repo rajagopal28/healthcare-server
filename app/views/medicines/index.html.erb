@@ -2,9 +2,9 @@
 
 <h1>Medicines</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>Name</th>
       <th>Description</th>
       <th>Type</th>
@@ -16,15 +16,15 @@
 
   <tbody>
     <% @medicines.each do |medicine| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= medicine.name %></td>
         <td><%= medicine.description %></td>
         <td><%= medicine.medicine_type %></td>
         <td><%= medicine.is_acidic %></td>
         <td><%= medicine.infant_safe %></td>
-        <td><%= link_to 'Show', medicine %></td>
-        <td><%= link_to 'Edit', edit_medicine_path(medicine) %></td>
-        <td><%= link_to 'Destroy', medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', medicine, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_medicine_path(medicine), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', medicine, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Medicine', new_medicine_path %>
+<%= link_to 'New Medicine', new_medicine_path, class: 'pure-button  button-secondary'  %>

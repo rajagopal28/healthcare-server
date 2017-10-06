@@ -2,9 +2,9 @@
 
 <h1>Prescribed Medicines</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>Medicine</th>
       <th>Prescription</th>
       <th>Notes</th>
@@ -21,7 +21,7 @@
 
   <tbody>
     <% @prescribed_medicines.each do |prescribed_medicine| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= prescribed_medicine.medicine.name %></td>
         <td><%= prescribed_medicine.prescription.notes %></td>
         <td><%= prescribed_medicine.notes %></td>
@@ -32,9 +32,9 @@
         <td><%= prescribed_medicine.before_dinner %></td>
         <td><%= prescribed_medicine.after_dinner %></td>
         <td><%= prescribed_medicine.available_count %></td>
-        <td><%= link_to 'Show', prescribed_medicine %></td>
-        <td><%= link_to 'Edit', edit_prescribed_medicine_path(prescribed_medicine) %></td>
-        <td><%= link_to 'Destroy', prescribed_medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', prescribed_medicine, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_prescribed_medicine_path(prescribed_medicine), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', prescribed_medicine, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +44,4 @@
 <h3>Visualisation</h3>
 <%= line_chart @prescribed_medicines.map{|pm| [pm.medicine.name, pm.available_count]} %>
 
-<%= link_to 'New Prescribed Medicine', new_prescribed_medicine_path %>
+<%= link_to 'New Prescribed Medicine', new_prescribed_medicine_path, class: 'pure-button  button-secondary' %>

@@ -2,9 +2,9 @@
 
 <h1>Doctors</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>First name</th>
       <th>Last name</th>
       <th>City</th>
@@ -19,7 +19,7 @@
 
   <tbody>
     <% @doctors.each do |doctor| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= doctor.first_name %></td>
         <td><%= doctor.last_name %></td>
         <td><%= doctor.city %></td>
@@ -28,9 +28,9 @@
         <td><%= doctor.address %></td>
         <td><%= doctor.primary_practice %></td>
         <td><%= doctor.secondary_practice %></td>
-        <td><%= link_to 'Show', doctor %></td>
-        <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', doctor, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_doctor_path(doctor) , class: 'pure-button  button-secondary' %></td>
+        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } , class: 'pure-button  button-warning' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Doctor', new_doctor_path %>
+<%= link_to 'New Doctor', new_doctor_path, class: 'pure-button  button-secondary'  %>

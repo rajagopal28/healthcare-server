@@ -2,9 +2,9 @@
 
 <h1>Users</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>First name</th>
       <th>Last name</th>
       <th>City</th>
@@ -17,16 +17,16 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.city %></td>
         <td><%= user.username %></td>
         <td><%= user.password %></td>
         <td><%= user.address %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, class: 'pure-button  button-secondary'  %>

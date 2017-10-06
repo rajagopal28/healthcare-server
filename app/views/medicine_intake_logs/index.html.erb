@@ -2,9 +2,9 @@
 
 <h1>Medicine Intake Logs</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>Prescribed medicine</th>
       <th>User</th>
       <th>Logged on</th>
@@ -16,15 +16,15 @@
 
   <tbody>
     <% @medicine_intake_logs.each do |medicine_intake_log| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= medicine_intake_log.prescribed_medicine.medicine.name %> for: <%= medicine_intake_log.prescribed_medicine.prescription.notes %></td>
         <td><%= medicine_intake_log.user.first_name %>&nbsp;<%= medicine_intake_log.user.last_name %></td>
         <td><%= medicine_intake_log.logged_on %></td>
         <td><%= medicine_intake_log.notes %></td>
         <td><%= medicine_intake_log.part_of_day %></td>
-        <td><%= link_to 'Show', medicine_intake_log %></td>
-        <td><%= link_to 'Edit', edit_medicine_intake_log_path(medicine_intake_log) %></td>
-        <td><%= link_to 'Destroy', medicine_intake_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', medicine_intake_log, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_medicine_intake_log_path(medicine_intake_log), class: 'pure-button  button-secondary' %></td>
+        <td><%= link_to 'Destroy', medicine_intake_log, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Medicine Intake Log', new_medicine_intake_log_path %>
+<%= link_to 'New Medicine Intake Log', new_medicine_intake_log_path, class: 'pure-button  button-secondary'  %>

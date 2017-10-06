@@ -4,7 +4,7 @@
 
 <table class="pure-table pure-table-bordered">
   <thead>
-    <tr>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
       <th>Description</th>
       <th>From</th>
       <th>To</th>
@@ -22,7 +22,7 @@
         <td><%= doctor_appointment.to %></td>
         <td><%= doctor_appointment.doctor.first_name %>&nbsp;<%= doctor_appointment.doctor.last_name %></td>
         <td><%= doctor_appointment.user.first_name %>&nbsp;<%= doctor_appointment.user.last_name %></td>
-        <td><%= link_to 'Show', doctor_appointment , class: 'pure-button  button-success' %></td>
+        <td><%= link_to 'Show', doctor_appointment, class: 'pure-button  pure-button-primary' %></td>
         <td><%= link_to 'Edit', edit_doctor_appointment_path(doctor_appointment), class: 'pure-button  button-secondary'  %></td>
         <td><%= link_to 'Destroy', doctor_appointment, method: :delete, data: { confirm: 'Are you sure?' } , class: 'pure-button button-warning' %></td>
       </tr>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Doctor Appointment', new_doctor_appointment_path %>
+<%= link_to 'New Doctor Appointment', new_doctor_appointment_path, class: 'pure-button  button-secondary'  %>
