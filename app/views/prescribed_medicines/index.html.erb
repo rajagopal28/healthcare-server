@@ -41,5 +41,7 @@
 </table>
 
 <br>
+<h3>Visualisation</h3>
+<%= line_chart @prescribed_medicines.map{|pm| [pm.medicine.name, pm.available_count]} %>
 
 <%= link_to 'New Prescribed Medicine', new_prescribed_medicine_path %>
