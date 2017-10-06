@@ -56,6 +56,11 @@
     <%= form.check_box :after_dinner, id: :prescribed_medicine_after_dinner %>
   </div>
 
+  <div class="field">
+    <%= form.label :available_count %>
+    <%= form.text_field :available_count, id: :prescribed_medicine_available_count %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
