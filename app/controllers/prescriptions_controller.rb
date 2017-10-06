@@ -1,5 +1,6 @@
 class PrescriptionsController < ApplicationController
   before_action :set_prescription, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors_and_users, only: [:new, :edit]
 
   # GET /prescriptions
   # GET /prescriptions.json
@@ -14,13 +15,11 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
-    set_doctors_and_users
     @prescription = Prescription.new
   end
 
   # GET /prescriptions/1/edit
   def edit
-    set_doctors_and_users
   end
 
   # POST /prescriptions

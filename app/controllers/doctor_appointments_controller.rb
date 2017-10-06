@@ -1,5 +1,6 @@
 class DoctorAppointmentsController < ApplicationController
   before_action :set_doctor_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors_and_users, only: [:new, :edit]
 
   # GET /doctor_appointments
   # GET /doctor_appointments.json
@@ -14,13 +15,11 @@ class DoctorAppointmentsController < ApplicationController
 
   # GET /doctor_appointments/new
   def new
-    set_doctors_and_users
     @doctor_appointment = DoctorAppointment.new
   end
 
   # GET /doctor_appointments/1/edit
   def edit
-    set_doctors_and_users
   end
 
   # POST /doctor_appointments

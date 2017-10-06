@@ -2,7 +2,7 @@
 
 <h1>Doctor Appointments</h1>
 
-<table>
+<table class="pure-table pure-table-bordered">
   <thead>
     <tr>
       <th>Description</th>
@@ -16,15 +16,15 @@
 
   <tbody>
     <% @doctor_appointments.each do |doctor_appointment| %>
-      <tr>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
         <td><%= doctor_appointment.description %></td>
         <td><%= doctor_appointment.from %></td>
         <td><%= doctor_appointment.to %></td>
         <td><%= doctor_appointment.doctor.first_name %>&nbsp;<%= doctor_appointment.doctor.last_name %></td>
         <td><%= doctor_appointment.user.first_name %>&nbsp;<%= doctor_appointment.user.last_name %></td>
-        <td><%= link_to 'Show', doctor_appointment %></td>
-        <td><%= link_to 'Edit', edit_doctor_appointment_path(doctor_appointment) %></td>
-        <td><%= link_to 'Destroy', doctor_appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', doctor_appointment , class: 'pure-button' , class: 'pure-button  button-success' %></td>
+        <td><%= link_to 'Edit', edit_doctor_appointment_path(doctor_appointment), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', doctor_appointment, method: :delete, data: { confirm: 'Are you sure?' } , class: 'pure-button button-warning' %></td>
       </tr>
     <% end %>
   </tbody>
