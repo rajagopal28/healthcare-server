@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @in_patient.user %>
+  <%= @in_patient.user.first_name %>&nbsp;<%= @in_patient.user.last_name %>
 </p>
 
 <p>
   <strong>Doctor:</strong>
-  <%= @in_patient.doctor %>
+  <%= @in_patient.doctor.first_name %>&nbsp;<%= @in_patient.doctor.last_name %>
 </p>
 
 <p>

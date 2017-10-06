@@ -18,8 +18,8 @@
   <tbody>
     <% @in_patients.each do |in_patient| %>
       <tr>
-        <td><%= in_patient.user %></td>
-        <td><%= in_patient.doctor %></td>
+        <td><%= in_patient.user.first_name %>&nbsp;<%= in_patient.user.last_name %></td>
+        <td><%= in_patient.doctor.first_name %>&nbsp;<%= in_patient.doctor.last_name %></td>
         <td><%= in_patient.visting_since %></td>
         <td><%= in_patient.notes %></td>
         <td><%= in_patient.status %></td>

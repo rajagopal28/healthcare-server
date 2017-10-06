@@ -1,5 +1,6 @@
 class InPatientsController < ApplicationController
   before_action :set_in_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctors_and_users, only: [:new, :edit]
 
   # GET /in_patients
   # GET /in_patients.json
@@ -65,6 +66,11 @@ class InPatientsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_in_patient
       @in_patient = InPatient.find(params[:id])
+    end
+
+    def set_doctors_and_users
+      @doctors = Doctor.all
+      @users = User.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
