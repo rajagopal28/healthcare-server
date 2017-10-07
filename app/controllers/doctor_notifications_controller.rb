@@ -1,11 +1,20 @@
 class DoctorNotificationsController < ApplicationController
   before_action :set_doctor_notification, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors_and_users, only: [:new, :edit]
+  before_action :set_doctor_user_from_session, only: [:index, :new]
 
   # GET /doctor_notifications
   # GET /doctor_notifications.json
   def index
-    @doctor_notifications = DoctorNotification.all
+    if @doctor && @user
+      @doctor_notifications = DoctorNotification.where(doctor_id: @doctor.id, user_id: @user.id)
+    elsif @user
+      @doctor_notifications = DoctorNotification.where(user_id: @user.id)
+    elsif @doctor
+      @doctor_notifications = DoctorNotification.where(doctor_id: @doctor.id)
+    else
+      @doctor_notifications = DoctorNotification.all
+    end
   end
 
   # GET /doctor_notifications/1
@@ -73,6 +82,30 @@ class DoctorNotificationsController < ApplicationController
       @users = User.all
     end
 
+    def set_doctor_user_from_session
+      #initialise ids
+      doctor_id = nil
+      user_id = nil
+
+      # find user
+      if session[:user_id]
+        user_id = session[:user_id]
+      elsif request.query_parameters['userId']
+        user_id = request.query_parameters['userId']
+      end
+      if user_id
+        @user = User.find(user_id)
+      end
+      # find doctor
+      if session[:doctor_id]
+        doctor_id = session[:doctor_id]
+      elsif request.query_parameters['doctorId']
+        doctor_id = request.query_parameters['doctorId']
+      end
+      if doctor_id
+        @doctor = Doctor.find(doctor_id)
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_notification_params
       params.require(:doctor_notification).permit(:title, :user_id, :doctor_id, :notified_on, :notes, :severity)

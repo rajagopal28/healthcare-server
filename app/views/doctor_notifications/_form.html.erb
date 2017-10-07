@@ -16,15 +16,25 @@
     <%= form.text_field :title, id: :doctor_notification_title %>
   </div>
 
-  <div class="field pure-control-group">
-    <%= form.label :doctor_id %>
-    <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name+' '+d.last_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
-  </div>
+  <% if @doctor %>
+    <div class="field pure-control-group">Doctor: <%= @doctor.first_name %>&nbsp;<%= @doctor.last_name %></div>
+    <%= form.hidden_field :doctor_id, :value => @doctor.id%>
+  <% else %>
+    <div class="field pure-control-group">
+      <%= form.label :doctor_id %>
+      <%= form.select :doctor_id, options_for_select(@doctors.map{ |d| [d.first_name+' '+d.last_name, d.id, {'username'=>d.username}] }, selected_key = form.object.doctor_id) %>
+    </div>
+  <% end %>
 
-  <div class="field pure-control-group">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
-  </div>
+  <% if @user %>
+    <div class="field pure-control-group">User: <%= @user.first_name %>&nbsp;<%= @user.last_name %></div>
+    <%= form.hidden_field :user_id, :value => @user.id%>
+  <% else %>
+    <div class="field pure-control-group">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
+    </div>
+  <% end %>
 
   <div class="field pure-control-group">
     <%= form.label :notified_on %>
