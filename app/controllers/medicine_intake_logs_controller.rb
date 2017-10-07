@@ -1,11 +1,16 @@
 class MedicineIntakeLogsController < ApplicationController
   before_action :set_medicine_intake_log, only: [:show, :edit, :update, :destroy]
   before_action :set_users_and_meds, only: [:new, :edit]
+  before_action :set_user_from_session, only: [:index, :new]
 
   # GET /medicine_intake_logs
   # GET /medicine_intake_logs.json
   def index
-    @medicine_intake_logs = MedicineIntakeLog.all
+    if @user
+      @medicine_intake_logs = MedicineIntakeLog.where(user_id: @user.id)
+    else
+      @medicine_intake_logs = MedicineIntakeLog.all
+    end
   end
 
   # GET /medicine_intake_logs/1
@@ -71,6 +76,21 @@ class MedicineIntakeLogsController < ApplicationController
     def set_users_and_meds
       @users = User.all
       @prescribed_medicines = PrescribedMedicine.all
+    end
+
+    def set_user_from_session
+      #initialise ids
+      user_id = nil
+
+      # find user
+      if session[:user_id]
+        user_id = session[:user_id]
+      elsif request.query_parameters['userId']
+        user_id = request.query_parameters['userId']
+      end
+      if user_id
+        @user = User.find(user_id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Medicine Intake Logs</h1>
+<% if @user %>
+  <h3>User: <%= @user.first_name %>&nbsp;<%= @user.last_name %></h3>
+<% end %>
 
 <table class="pure-table pure-table-bordered">
   <thead>

@@ -15,11 +15,15 @@
     <%= form.select :prescribed_medicine_id, options_for_select(@prescribed_medicines.map{ |pm| [pm.medicine.name, pm.id, {'prescription'=>pm.prescription}] }, selected_key = form.object.prescribed_medicine_id) %>
   </div>
 
-  <div class="field pure-control-group">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
-  </div>
-
+  <% if @user %>
+    <div class="field pure-control-group">User: <%= @user.first_name %>&nbsp;<%= @user.last_name %></div>
+    <%= form.hidden_field :user_id, :value => @user.id%>
+  <% else %>
+    <div class="field pure-control-group">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, options_for_select(@users.map{ |u| [u.first_name+' '+u.last_name, u.id, {'username'=>u.username}] }, selected_key = form.object.user_id) %>
+    </div>
+  <% end %>
   <div class="field pure-control-group">
     <%= form.label :logged_on %>
     <%= form.datetime_select :logged_on, id: :medicine_intake_log_logged_on %>
