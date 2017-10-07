@@ -63,7 +63,10 @@
     <% end %>
   </tbody>
 </table>
+<br/>
 
+<%= link_to 'Add Prescribed Medicine', new_prescribed_medicine_path(:prescriptionId => @prescription.id), class: 'pure-button  button-secondary' %>
+<hr/>
 <br/>
 
 <%= link_to 'Edit', edit_prescription_path(@prescription), class: 'pure-button  pure-button-primary'  %> |
