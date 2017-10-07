@@ -16,13 +16,23 @@
 </p>
 
 <p>
-  <strong>Vital name:</strong>
-  <%= @user_vital_log.vital_name %>
+  <strong>Pressure:</strong>
+  <%= @user_vital_log.pressure %>
 </p>
 
 <p>
-  <strong>Vital value:</strong>
-  <%= @user_vital_log.vital_value %>
+  <strong>Sugar:</strong>
+  <%= @user_vital_log.sugar %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @user_vital_log.temperature %>
+</p>
+
+<p>
+  <strong>Pulse:</strong>
+  <%= @user_vital_log.pulse %>
 </p>
 
 <%= link_to 'Edit', edit_user_vital_log_path(@user_vital_log), class: 'pure-button  pure-button-primary'  %> |

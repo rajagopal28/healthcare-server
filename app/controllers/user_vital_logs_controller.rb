@@ -93,6 +93,6 @@ class UserVitalLogsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_vital_log_params
-      params.require(:user_vital_log).permit(:user_id, :logged_on, :notes, :vital_name, :vital_value)
+      params.require(:user_vital_log).permit(:user_id, :logged_on, :notes, :pressure, :sugar, :temperature, :pulse)
     end
 end

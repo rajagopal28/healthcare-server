@@ -31,14 +31,24 @@
   </div>
 
   <div class="field pure-control-group">
-    <%= form.label :vital_name %>
-    <%= form.text_field :vital_name, id: :user_vital_log_vital_name %>
+    <%= form.label :pressure %>
+    <%= form.text_field :pressure, id: :user_vital_log_pressure %>
   </div>
 
-    <div class="field pure-control-group">
-      <%= form.label :vital_value %>
-      <%= form.text_field :vital_value, id: :user_vital_log_vital_value %>
-    </div>
+  <div class="field pure-control-group">
+    <%= form.label :sugar %>
+    <%= form.text_field :sugar, id: :user_vital_log_sugar %>
+  </div>
+
+  <div class="field pure-control-group">
+    <%= form.label :temperature %>
+    <%= form.text_field :temperature, id: :user_vital_log_temperature %>
+  </div>
+
+  <div class="field pure-control-group">
+    <%= form.label :pulse %>
+    <%= form.text_field :pulse, id: :user_vital_log_pulse %>
+  </div>
 
   <div class="actions">
     <%= form.submit 'submit', :class => 'pure-button'%>
