@@ -1,11 +1,20 @@
 class PrescribedMedicinesController < ApplicationController
   before_action :set_prescribed_medicine, only: [:show, :edit, :update, :destroy]
   before_action :set_medicines_and_prescriptions, only: [:new, :edit]
+  before_action :set_prescription_medicines_from_param, only: [:index, :new]
 
   # GET /prescribed_medicines
   # GET /prescribed_medicines.json
   def index
-    @prescribed_medicines = PrescribedMedicine.all
+    if @prescription && @medicine
+      @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id, medicine_id: @medicine.id)
+    elsif @prescription
+      @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id)
+    elsif @medicine
+      @prescribed_medicines = PrescribedMedicine.where(medicine_id: @medicine.id)
+    else
+      @prescribed_medicines = PrescribedMedicine.all
+    end
   end
 
   # GET /prescribed_medicines/1
@@ -71,6 +80,17 @@ class PrescribedMedicinesController < ApplicationController
     def set_medicines_and_prescriptions
       @medicines = Medicine.all
       @prescriptions = Prescription.all
+    end
+
+    def set_prescription_medicines_from_param
+      medicine_id = request.query_parameters['medicineId']
+      prescription_id = request.query_parameters['prescriptionId']
+      if medicine_id
+        @medicine = Medicine.find(medicine_id)
+      end
+      if prescription_id
+        @prescription = Prescription.find(prescription_id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

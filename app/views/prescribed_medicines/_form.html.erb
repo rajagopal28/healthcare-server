@@ -10,15 +10,25 @@
       </ul>
     </div>
   <% end %>
-  <div class="field pure-control-group">
-    <%= form.label :medicine_id %>
-    <%= form.select :medicine_id, options_for_select(@medicines.map{ |m| [m.name, m.id, {'name'=>m.name}] }, selected_key = form.object.medicine_id) %>
-  </div>
-  <div class="field pure-control-group">
-    <%= form.label :prescription_id %>
-    <%= form.select :prescription_id, options_for_select(@prescriptions.map{ |pr| [pr.notes, pr.id, {'notes'=>pr.notes}] }, selected_key = form.object.prescription_id) %>
-  </div>
+  <% if @medicine %>
+    <div class="field pure-control-group">Medicine: <%= @medicine.name%></div>
+    <%= form.hidden_field :medicine_id, :value => @medicine.id%>
+  <% else %>
+    <div class="field pure-control-group">
+      <%= form.label :medicine_id %>
+      <%= form.select :medicine_id, options_for_select(@medicines.map{ |m| [m.name, m.id, {'name'=>m.name}] }, selected_key = form.object.medicine_id) %>
+    </div>
+  <% end %>
 
+  <% if @prescription %>
+    <div class="field pure-control-group">Prescription: <%= @prescription.notes %></div>
+    <%= form.hidden_field :prescription_id, :value => @prescription.id%>
+  <% else %>
+    <div class="field pure-control-group">
+      <%= form.label :prescription_id %>
+      <%= form.select :prescription_id, options_for_select(@prescriptions.map{ |pr| [pr.notes, pr.id, {'notes'=>pr.notes}] }, selected_key = form.object.prescription_id) %>
+    </div>
+  <% end %>
   <div class="field pure-control-group">
     <%= form.label :notes %>
     <%= form.text_area :notes, id: :prescribed_medicine_notes %>

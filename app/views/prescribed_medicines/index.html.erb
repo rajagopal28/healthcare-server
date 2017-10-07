@@ -2,6 +2,13 @@
 
 <h1>Prescribed Medicines</h1>
 
+<% if @medicine %>
+  <h3>Medicine: <%= @medicine.name%></h3>
+<% end %>
+<% if @prescription %>
+  <h3>Prescription: <%= @prescription.notes %></h3>
+<% end %>
+
 <table class="pure-table pure-table-bordered">
   <thead>
     <tr class="<%= cycle('pure-table-odd', '') -%>">
