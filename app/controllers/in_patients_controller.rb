@@ -1,11 +1,20 @@
 class InPatientsController < ApplicationController
   before_action :set_in_patient, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors_and_users, only: [:new, :edit]
+  before_action :set_doctor_user_from_session, only: [:index, :new]
 
   # GET /in_patients
   # GET /in_patients.json
   def index
-    @in_patients = InPatient.all
+    if @doctor && @user
+      @in_patients = InPatient.where(user_id: @user.id, doctor_id: @doctor.id)
+    elsif @doctor
+      @in_patients = InPatient.where(doctor_id: @doctor.id)
+    elsif @user
+      @in_patients = InPatient.where(user_id: @user.id)
+    else
+      @in_patients = InPatient.all
+    end
   end
 
   # GET /in_patients/1
@@ -71,6 +80,32 @@ class InPatientsController < ApplicationController
     def set_doctors_and_users
       @doctors = Doctor.all
       @users = User.all
+    end
+
+    def set_doctor_user_from_session
+      #initialise ids
+      doctor_id = nil
+      user_id = nil
+
+      # find user
+      if session[:user_id]
+        user_id = session[:user_id]
+      elsif request.query_parameters['userId']
+        user_id = request.query_parameters['userId']
+      end
+      if user_id
+        @user = User.find(user_id)
+      end
+
+      # find doctor
+      if session[:doctor_id]
+        doctor_id = session[:doctor_id]
+      elsif request.query_parameters['doctorId']
+        doctor_id = request.query_parameters['doctorId']
+      end
+      if doctor_id
+        @doctor = Doctor.find(doctor_id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
