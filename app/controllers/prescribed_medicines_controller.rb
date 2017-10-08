@@ -1,3 +1,4 @@
+require 'time'
 class PrescribedMedicinesController < ApplicationController
   before_action :set_prescribed_medicine, only: [:show, :edit, :update, :destroy]
   before_action :set_medicines_and_prescriptions, only: [:new, :edit]
@@ -6,14 +7,48 @@ class PrescribedMedicinesController < ApplicationController
   # GET /prescribed_medicines
   # GET /prescribed_medicines.json
   def index
-    if @prescription && @medicine
-      @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id, medicine_id: @medicine.id)
-    elsif @prescription
-      @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id)
-    elsif @medicine
-      @prescribed_medicines = PrescribedMedicine.where(medicine_id: @medicine.id)
+    if @user
+      _te = []
+      @user.prescriptions.each{ |pr| _te = _te + pr.prescribed_medicines }
+      if @part_of_day
+        case @part_of_day
+        when "morning"
+          @prescribed_medicines = _te.select do |pm|
+            pm.before_breakfast || pm.after_breakfast
+          end
+        when "noon"
+          @prescribed_medicines = _te.select do |pm|
+            pm.before_lunch || pm.after_lunch
+          end
+        when "night"
+          @prescribed_medicines = _te.select do |pm|
+            pm.before_dinner || pm.after_dinner
+          end
+        end
+      else
+        @prescribed_medicines = _te
+      end
     else
-      @prescribed_medicines = PrescribedMedicine.all
+      if @prescription && @medicine
+        @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id, medicine_id: @medicine.id)
+      elsif @prescription
+        @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id)
+      elsif @medicine
+        @prescribed_medicines = PrescribedMedicine.where(medicine_id: @medicine.id)
+      else
+        if @part_of_day
+          case @part_of_day
+          when "morning"
+            @prescribed_medicines = PrescribedMedicine.where('before_breakfast=? OR after_breakfast=?', 't', 't')
+          when "noon"
+            @prescribed_medicines = PrescribedMedicine.where('before_lunch=? OR after_lunch=?', 't', 't')
+          when "night"
+            @prescribed_medicines = PrescribedMedicine.where('before_lunch=? OR after_lunch=?', 't', 't')
+          end
+        else
+          @prescribed_medicines = PrescribedMedicine.all
+        end
+      end
     end
   end
 
@@ -85,11 +120,31 @@ class PrescribedMedicinesController < ApplicationController
     def set_prescription_medicines_from_param
       medicine_id = request.query_parameters['medicineId']
       prescription_id = request.query_parameters['prescriptionId']
+      time_param = request.query_parameters['time']
+      user_id = session[:user_id] ? session[:user_id] : request.query_parameters['userId']
+
       if medicine_id
         @medicine = Medicine.find(medicine_id)
       end
       if prescription_id
         @prescription = Prescription.find(prescription_id)
+      end
+
+      if user_id
+        @user = User.find(user_id)
+      end
+
+      if time_param == 'now'
+        _hour = Time.now.hour
+        @part_of_day = 'morning'
+        if _hour > 5 && _hour < 12
+          @part_of_day = 'morning'
+        elsif _hour >=12 && _hour < 18
+          @part_of_day = 'noon'
+        elsif _hour >=18 && _hour < 22
+          @part_of_day = 'night'
+        end
+        puts @part_of_day
       end
     end
 
