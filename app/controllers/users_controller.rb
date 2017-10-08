@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     _user = User.where(login_params).first()
     respond_to do |format|
       if _user
+        session[:user_id] = _user.id
         format.html { redirect_to :controller => 'home', :action => 'index'  }
         format.json { render :show, status: :created, location: _user }
       else
