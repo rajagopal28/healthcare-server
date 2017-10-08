@@ -21,6 +21,35 @@ class DoctorsController < ApplicationController
   def edit
   end
 
+  # GET /doctors/login
+  def login
+    @doctor = Doctor.new
+  end
+
+  # GET /doctors/logout
+  def logout
+    session.delete(:doctor_id)
+     redirect_to :controller => 'home', :action => 'index' 
+  end
+
+  # POST /doctors/singin
+  # POST /doctors/signin.json
+  def signin
+    @doctor = Doctor.new(login_params)
+    _doctor = Doctor.where(login_params).first()
+    respond_to do |format|
+      if _doctor
+        session[:doctor_id] = _doctor.id
+        format.html { redirect_to :controller => 'home', :action => 'index'  }
+        format.json { render :show, status: :created, location: _doctor }
+      else
+        @doctor.errors.add(:username, :blank, message: "Invalid credentials")
+        format.html { render :login }
+        format.json { render json: @doctor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /doctors
   # POST /doctors.json
   def create
@@ -70,5 +99,9 @@ class DoctorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
       params.require(:doctor).permit(:first_name, :last_name, :city, :username, :password, :address, :primary_practice, :secondary_practice)
+    end
+
+    def login_params
+      params.require(:doctor).permit(:username, :password)
     end
 end

@@ -1,0 +1,26 @@
+<%= form_with(model: @doctor,:url => url_for(:controller => 'doctors', :action => 'signin'), class: 'pure-form pure-form-aligned', local: true) do |form| %>
+  <% if @doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+      <ul>
+      <% @doctor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field pure-control-group">
+    <%= form.label :username %>
+    <%= form.text_field :username, id: :doctor_username %>
+  </div>
+
+  <div class="field pure-control-group">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :doctor_password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'submit', :class => 'pure-button'%>
+  </div>
+<% end %>
