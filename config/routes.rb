@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :medicines
   resources :doctor_appointments
   resources :doctors
-  resources :users
+  resources :users do
+    get 'login', :on => :collection
+    post 'signin', :on => :collection
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root :to => 'home#index'

@@ -12,6 +12,28 @@ class UsersController < ApplicationController
   def show
   end
 
+  # GET /users/login
+  def login
+    @user = User.new
+  end
+
+  # POST /users/singin
+  # POST /users/signin.json
+  def signin
+    @user = User.new(login_params)
+    _user = User.where(login_params).first()
+    respond_to do |format|
+      if _user
+        format.html { redirect_to :controller => 'home', :action => 'index'  }
+        format.json { render :show, status: :created, location: _user }
+      else
+        @user.errors.add(:username, :blank, message: "Invalid credentials")
+        format.html { render :login }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -70,5 +92,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :city, :username, :password, :address)
+    end
+
+    def login_params
+      params.require(:user).permit(:username, :password)
     end
 end
