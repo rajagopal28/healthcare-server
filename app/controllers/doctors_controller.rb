@@ -46,9 +46,10 @@ class DoctorsController < ApplicationController
     _doctor = Doctor.where(login_params).first()
     respond_to do |format|
       if _doctor
-        session[:doctor_id] = _doctor.id
+        @doctor = _doctor
+        session[:doctor_id] = @doctor.id
         format.html { redirect_to :controller => 'home', :action => 'index'  }
-        format.json { render :show, status: :created, location: _doctor }
+        format.json { render :show, status: :created, location: @doctor }
       else
         @doctor.errors.add(:username, :blank, message: "Invalid credentials")
         format.html { render :login }
