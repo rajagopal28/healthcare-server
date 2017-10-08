@@ -9,10 +9,15 @@ Rails.application.routes.draw do
   resources :prescriptions
   resources :medicines
   resources :doctor_appointments
-  resources :doctors
+  resources :doctors do
+    get 'login', :on => :collection
+    post 'signin', :on => :collection
+    get 'logout', :on => :collection
+  end
   resources :users do
     get 'login', :on => :collection
     post 'signin', :on => :collection
+    get 'logout', :on => :collection
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
