@@ -4,7 +4,14 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    first_name = request.query_parameters['firstName']
+    last_name = request.query_parameters['lastName']
+    if first_name && last_name
+      @doctors = Doctor.where(first_name: first_name.to_s.capitalize, last_name: last_name.to_s.capitalize)
+    else
+      @doctors = Doctor.all
+    end
+
   end
 
   # GET /doctors/1
@@ -29,7 +36,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/logout
   def logout
     session.delete(:doctor_id)
-     redirect_to :controller => 'home', :action => 'index' 
+     redirect_to :controller => 'home', :action => 'index'
   end
 
   # POST /doctors/singin
