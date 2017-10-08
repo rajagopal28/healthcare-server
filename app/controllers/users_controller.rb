@@ -12,6 +12,13 @@ class UsersController < ApplicationController
   def show
   end
 
+
+  # GET /users/logout
+  def logout
+    session.delete(:user_id)
+     redirect_to :controller => 'home', :action => 'index'
+  end
+
   # GET /users/login
   def login
     @user = User.new
