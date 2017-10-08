@@ -9,6 +9,7 @@
         <p>
           This application is created with an intent to simplify the way that doctors and patient interact with each other. This applciation has 3 parts, the web applicaion, a mobile app and an Alexa skill with which the user can easily get access to the essentiel information about his doctor appointment, medicine in take, presceriptions and vital monitoring
         </p>
+        <% if !@user && !@doctor %>
         <h2 class="content-subhead">Get Access</h2>
         <p>
             You can login as User by <%= link_to "Clicking Here", {:controller => :users, :action => :login}, { class: 'pure-button  button-secondary'} %>.
@@ -18,7 +19,7 @@
             <br/>
             <code>Have a good day!</code>
         </p>
-
+        <% end %>
         <% if @user %>
           <h2 class="content-subhead">You have logged in as User <%= link_to "Logout", {:controller => :users, :action => :logout}, { class: 'pure-button  button-secondary'} %> </h2>
           <p>
