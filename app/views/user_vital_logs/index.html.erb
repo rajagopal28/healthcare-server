@@ -37,6 +37,27 @@
   </tbody>
 </table>
 
+<br />
+<%= link_to 'New User Vital Log', new_user_vital_log_path, class: 'pure-button  button-secondary'  %>
+
 <br>
 
-<%= link_to 'New User Vital Log', new_user_vital_log_path, class: 'pure-button  button-secondary'  %>
+<% if @user %>
+  <h3>Pressure</h3>
+  <%= line_chart @user_vital_logs.pluck(:logged_on, :pressure), xtitle: "Time", ytitle: "Pressure" %>
+  <h3>Sugar</h3>
+  <%= line_chart @user_vital_logs.pluck(:logged_on, :sugar), xtitle: "Time", ytitle: "Sugar" %>
+  <h3>Temperature</h3>
+  <%= line_chart @user_vital_logs.pluck(:logged_on, :temperature), xtitle: "Time", ytitle: "Temperature" %>
+  <h3>Pulse</h3>
+  <%= line_chart @user_vital_logs.pluck(:logged_on, :pulse), xtitle: "Time", ytitle: "Pulse" %>
+<% else %>
+  <h3>Pressure</h3>
+  <%= column_chart @user_vital_logs.group(:user).average(:pressure).map{|user, value| [user.first_name + ' ' + user.last_name, value]}, xtitle: "User", ytitle: "Pressure" %>
+  <h3>Sugar</h3>
+  <%= column_chart @user_vital_logs.group(:user).average(:sugar).map{|user, value| [user.first_name + ' ' + user.last_name, value]}, xtitle: "Time", ytitle: "Sugar" %>
+  <h3>Temperature</h3>
+  <%= column_chart @user_vital_logs.group(:user).average(:temperature).map{|user, value| [user.first_name + ' ' + user.last_name, value]}, xtitle: "Time", ytitle: "Temperature(degree C)" %>
+  <h3>Pulse</h3>
+  <%= column_chart @user_vital_logs.group(:user).average(:pulse).map{|user, value| [user.first_name + ' ' + user.last_name, value]}, xtitle: "Time", ytitle: "Pulse(per sec)" %>
+<% end %>
