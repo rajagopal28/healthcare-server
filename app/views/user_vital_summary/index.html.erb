@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Vital Summay</h1>
+<% if @user %>
+  <h3>User: <%= @user.first_name %>&nbsp;<%= @user.last_name %></h3>
+<% end %>
+
+<table class="pure-table pure-table-bordered">
+  <thead>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
+      <th>User</th>
+      <th>Pressue</th>
+      <th>Pressue Status</th>
+      <th>Sugar</th>
+      <th>Sugar Status</th>
+      <th>Temperature</th>
+      <th>Temperature Status</th>
+      <th>Pulse</th>
+      <th>Pulse Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_vital_summary.each do |uvs| %>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
+        <td><%= uvs.user_vital_log.user.first_name %> <%= uvs.user_vital_log.user.last_name %></td>
+        <td><%= uvs.user_vital_log.pressure %></td>
+        <td><%= uvs.pressure_status %></td>
+        <td><%= uvs.user_vital_log.sugar %></td>
+        <td><%= uvs.sugar_status %></td>
+        <td><%= uvs.user_vital_log.temperature %></td>
+        <td><%= uvs.temperature_status %></td>
+        <td><%= uvs.user_vital_log.pulse %></td>
+        <td><%= uvs.pulse_status %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

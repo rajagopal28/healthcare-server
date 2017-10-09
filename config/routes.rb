@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post 'signin', :on => :collection
     get 'logout', :on => :collection
   end
+  get 'user_vital_summary', to: 'user_vital_summary#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root :to => 'home#index'
