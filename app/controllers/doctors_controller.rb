@@ -43,7 +43,10 @@ class DoctorsController < ApplicationController
   # POST /doctors/signin.json
   def signin
     @doctor = Doctor.new(login_params)
-    _doctor = Doctor.where(login_params).first()
+    _doctor = Doctor.where(username: login_params[:username], password: login_params[:password]).first()
+    if login_params[:gcmid]
+      _doctor.update_column(:gcmid, login_params[:gcmid])
+    end
     respond_to do |format|
       if _doctor
         @doctor = _doctor
@@ -110,6 +113,6 @@ class DoctorsController < ApplicationController
     end
 
     def login_params
-      params.require(:doctor).permit(:username, :password)
+      params.require(:doctor).permit(:username, :password, :gcmid)
     end
 end
