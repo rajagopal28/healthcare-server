@@ -51,6 +51,11 @@
     <%= form.text_field :secondary_practice, id: :doctor_secondary_practice %>
   </div>
 
+  <div class="field pure-control-group">
+    <%= form.label :gcmid %>
+    <%= form.text_field :gcmid, id: :doctor_gcmid %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'submit', :class => 'pure-button'%>
   </div>

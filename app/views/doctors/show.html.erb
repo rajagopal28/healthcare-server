@@ -40,5 +40,10 @@
   <%= @doctor.secondary_practice %>
 </p>
 
+<p>
+  <strong>GCMID:</strong>
+  <%= @doctor.gcmid %>
+</p>
+
 <%= link_to 'Edit', edit_doctor_path(@doctor), class: 'pure-button  pure-button-primary'  %> |
 <%= link_to 'Back', doctors_path, class: 'pure-button  button-secondary'  %>
