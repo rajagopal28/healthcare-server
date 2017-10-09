@@ -49,6 +49,6 @@
 
 <br>
 <h3>Visualisation</h3>
-<%= line_chart @prescribed_medicines.map{|pm| [pm.medicine.name, pm.available_count]} %>
+<%= line_chart @prescribed_medicines.group(:medicine).sum(:available_count).map{|m, count| [m.name, count]} %>
 
 <%= link_to 'New Prescribed Medicine', new_prescribed_medicine_path, class: 'pure-button  button-secondary' %>
