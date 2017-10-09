@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prescribed Medicines</h1>
+
+<% if @medicine %>
+  <h3>Medicine: <%= @medicine.name%></h3>
+<% end %>
+<% if @prescription %>
+  <h3>Prescription: <%= @prescription.notes %></h3>
+<% end %>
+
+<table class="pure-table pure-table-bordered">
+  <thead>
+    <tr class="<%= cycle('pure-table-odd', '') -%>">
+      <th>Medicine</th>
+      <th>Prescription</th>
+      <th>Notes</th>
+      <th>Before breakfast</th>
+      <th>After breakfast</th>
+      <th>Before lunch</th>
+      <th>After lunch</th>
+      <th>Before dinner</th>
+      <th>After dinner</th>
+      <th>Available Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prescribed_medicines.each do |prescribed_medicine| %>
+      <tr class="<%= cycle('pure-table-odd', '') -%>">
+        <td><%= prescribed_medicine.medicine.name %></td>
+        <td><%= prescribed_medicine.prescription.notes %></td>
+        <td><%= prescribed_medicine.notes %></td>
+        <td><%= prescribed_medicine.before_breakfast %></td>
+        <td><%= prescribed_medicine.after_breakfast %></td>
+        <td><%= prescribed_medicine.before_lunch %></td>
+        <td><%= prescribed_medicine.after_lunch %></td>
+        <td><%= prescribed_medicine.before_dinner %></td>
+        <td><%= prescribed_medicine.after_dinner %></td>
+        <td><%= prescribed_medicine.available_count %></td>
+        <td><%= link_to 'Show', prescribed_medicine, class: 'pure-button  pure-button-primary'  %></td>
+        <td><%= link_to 'Edit', edit_prescribed_medicine_path(prescribed_medicine), class: 'pure-button  button-secondary'  %></td>
+        <td><%= link_to 'Destroy', prescribed_medicine, method: :delete, data: { confirm: 'Are you sure?' }, class: 'pure-button  button-warning'  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Prescribed Medicine', new_prescribed_medicine_path, class: 'pure-button  button-secondary' %>

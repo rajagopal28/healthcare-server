@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :doctor_notifications
   resources :user_vital_logs
   resources :in_patients
-  resources :prescribed_medicines
+  resources :prescribed_medicines do
+    get 'filtered', :on => :collection
+  end
   resources :prescriptions
   resources :medicines
   resources :doctor_appointments
