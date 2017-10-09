@@ -28,7 +28,10 @@ class UsersController < ApplicationController
   # POST /users/signin.json
   def signin
     @user = User.new(login_params)
-    _user = User.where(login_params).first()
+    _user = User.where(username: login_params[:username], password: login_params[:password]).first()
+    if login_params[:gcmid]
+      _user.update_column(:gcmid, login_params[:gcmid])
+    end
     respond_to do |format|
       if _user
         @user = _user
@@ -104,6 +107,6 @@ class UsersController < ApplicationController
     end
 
     def login_params
-      params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:username, :password, :gcmid)
     end
 end
