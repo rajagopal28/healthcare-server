@@ -12,6 +12,14 @@
 
   <body>
     <div id="layout">
+      <div class="pure-menu pure-menu-horizontal pull-right">
+          <a href="#" class="pure-menu-heading pure-menu-link">BRAND</a>
+          <ul class="pure-menu-list">
+              <li class="pure-menu-item"><a href="#" class="pure-menu-link">News</a></li>
+              <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
+              <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
+          </ul>
+      </div>
         <!-- Menu toggle -->
         <a href="#menu" id="menuLink" class="menu-link">
             <!-- Hamburger icon -->
@@ -50,6 +58,9 @@
                     </li>
                     <li class="pure-menu-item">
                       <%= link_to 'User Vitals logs', user_vital_logs_path, class: 'pure-menu-link'  %>
+                    </li>
+                    <li class="pure-menu-item">
+                      <%= link_to 'User Vitals Summary', user_vital_summary_path, class: 'pure-menu-link'  %>
                     </li>
                     <li class="pure-menu-item"><a href="https://github.com/rajagopal28/healthcare-server" target="_blank" class="pure-menu-link">About</a></li>
                 </ul>
