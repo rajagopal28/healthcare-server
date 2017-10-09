@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009143140) do
+ActiveRecord::Schema.define(version: 20171009143933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20171009143140) do
     t.string "secondary_practice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gmdid"
+    t.string "gcmid"
   end
 
   create_table "in_patients", force: :cascade do |t|
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20171009143140) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gmdid"
+    t.string "gcmid"
   end
 
   add_foreign_key "doctor_notifications", "doctors"
