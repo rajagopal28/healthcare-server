@@ -41,6 +41,11 @@
     <%= form.text_area :address, id: :user_address %>
   </div>
 
+  <div class="field pure-control-group">
+    <%= form.label :gcmid %>
+    <%= form.text_field :gcmid, id: :user_gcmid %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'submit', :class => 'pure-button'%>
   </div>
