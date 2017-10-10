@@ -54,4 +54,6 @@ gem 'chartkick', '>= 2.2.4'
 
 gem 'groupdate', '>= 3.2.0'
 
+gem 'rest-client'
+
 ruby "2.4.2"
