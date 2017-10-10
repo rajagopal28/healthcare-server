@@ -38,6 +38,8 @@ class DoctorNotificationsController < ApplicationController
 
     respond_to do |format|
       if @doctor_notification.save
+        send_notification_for_doctor_device
+        # send response
         format.html { redirect_to @doctor_notification, notice: 'Doctor notification was successfully created.' }
         format.json { render :show, status: :created, location: @doctor_notification }
       else
@@ -106,6 +108,27 @@ class DoctorNotificationsController < ApplicationController
         @doctor = Doctor.find(doctor_id)
       end
     end
+
+    def send_notification_for_doctor_device
+      #send notification for valid selenium-webdriver
+      _doctor = @doctor_notification.doctor
+      if _doctor.gcmid && _doctor.gcmid.length > 10
+        url = 'https://gcm-http.googleapis.com/gcm/send'
+        payload = { notification: {
+              title: "Notification of Patient: "+ @doctor_notification.user.first_name + " Severity: "+@doctor_notification.severity,
+              text: @doctor_notification.notes
+            },
+            to: _doctor.gcmid
+          }
+          puts JSON.generate(payload)
+        resp = RestClient.post(url,
+                  payload: payload,
+                  headers: {"Content-Type" => "application/json", "Authorization" => "key="+Rails.application.secrets.gcm_server_auth_key}
+                  )
+        puts resp
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_notification_params
       params.require(:doctor_notification).permit(:title, :user_id, :doctor_id, :notified_on, :notes, :severity)
