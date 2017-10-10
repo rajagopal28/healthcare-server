@@ -30,7 +30,9 @@ class PrescribedMedicinesController < ApplicationController
       end
       _medicine_intake_logs = MedicineIntakeLog.where(:logged_on => start..finish)
       _prescribed_medicines_ids = _medicine_intake_logs.map{|pm| pm.id}
-      @prescribed_medicines = @prescribed_medicines.where.not(id: _prescribed_medicines_ids)
+      if !@prescribed_medicines.empty?
+          @prescribed_medicines = @prescribed_medicines.where.not(id: _prescribed_medicines_ids)
+      end
     end
   end
 
@@ -101,20 +103,20 @@ class PrescribedMedicinesController < ApplicationController
     end
 
     def set_prescription_medicines_from_param
-      medicine_id = request.query_parameters['medicineId']
-      prescription_id = request.query_parameters['prescriptionId']
+      _medicine_id = request.query_parameters['medicineId']
+      _prescription_id = request.query_parameters['prescriptionId']
       time_param = request.query_parameters['time']
-      user_id = session[:user_id] ? session[:user_id] : request.query_parameters['userId']
+      _user_id = session[:user_id] ? session[:user_id] : request.query_parameters['userId']
 
-      if medicine_id
+      if _medicine_id
         @medicine = Medicine.find(medicine_id)
       end
-      if prescription_id
-        @prescription = Prescription.find(prescription_id)
+      if _prescription_id
+        @prescription = Prescription.find(_prescription_id)
       end
 
-      if user_id
-        @user = User.find(user_id)
+      if _user_id
+        @user = User.find(_user_id)
       end
 
       if time_param == 'now'
@@ -138,26 +140,19 @@ class PrescribedMedicinesController < ApplicationController
 
     def load_data_based_on_session
       if @user
-        _te = []
-        @user.prescriptions.each{ |pr| _te = _te + pr.prescribed_medicines }
-        if @part_of_day
-          case @part_of_day
-          when "morning"
-            @prescribed_medicines = _te.select do |pm|
-              pm.before_breakfast || pm.after_breakfast
+          _prescription_ids = @user.prescriptions.map{|pr| pr.id}
+          @prescribed_medicines = PrescribedMedicine.where(prescription_id: _prescription_ids)
+          if @part_of_day
+            case @part_of_day
+            when "morning"
+              condition = 'before_breakfast=? OR after_breakfast=?'
+            when "noon"
+              condition = 'before_lunch=? OR after_lunch=?'
+            when "night"
+              condition = 'before_lunch=? OR after_lunch=?'
             end
-          when "noon"
-            @prescribed_medicines = _te.select do |pm|
-              pm.before_lunch || pm.after_lunch
-            end
-          when "night"
-            @prescribed_medicines = _te.select do |pm|
-              pm.before_dinner || pm.after_dinner
-            end
-          end
-        else
-          @prescribed_medicines = _te
-        end
+            @prescribed_medicines = @prescribed_medicines.where(condition, 't', 't')
+         end
       else
         if @prescription && @medicine
           @prescribed_medicines = PrescribedMedicine.where(prescription_id: @prescription.id, medicine_id: @medicine.id)
@@ -169,12 +164,13 @@ class PrescribedMedicinesController < ApplicationController
           if @part_of_day
             case @part_of_day
             when "morning"
-              @prescribed_medicines = PrescribedMedicine.where('before_breakfast=? OR after_breakfast=?', 't', 't')
+              condition = 'before_breakfast=? OR after_breakfast=?'
             when "noon"
-              @prescribed_medicines = PrescribedMedicine.where('before_lunch=? OR after_lunch=?', 't', 't')
+              condition = 'before_lunch=? OR after_lunch=?'
             when "night"
-              @prescribed_medicines = PrescribedMedicine.where('before_lunch=? OR after_lunch=?', 't', 't')
+                condition = 'before_lunch=? OR after_lunch=?'
             end
+            @prescribed_medicines = @prescribed_medicines.where(condition, 't', 't')
           else
             @prescribed_medicines = PrescribedMedicine.all
           end
