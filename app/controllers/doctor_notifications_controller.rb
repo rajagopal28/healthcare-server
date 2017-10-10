@@ -121,6 +121,7 @@ class DoctorNotificationsController < ApplicationController
             to: _doctor.gcmid
           }
           puts JSON.generate(payload)
+          puts "key="+Rails.application.secrets.gcm_server_auth_key
         resp = RestClient.post(url,
                   payload: payload,
                   headers: {"Content-Type" => "application/json", "Authorization" => "key="+Rails.application.secrets.gcm_server_auth_key}
