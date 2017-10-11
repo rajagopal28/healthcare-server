@@ -116,7 +116,7 @@ class DoctorNotificationsController < ApplicationController
         url = 'https://gcm-http.googleapis.com/gcm/send'
         title = "Notification(#{@doctor_notification.title}) of Patient: #{@doctor_notification.user.first_name} Severity: #{@doctor_notification.severity}"
         payload = { notification: {
-              title: "Notification of Patient: "+ @doctor_notification.user.first_name + " Severity: "+@doctor_notification.severity,
+              title: title,
               text: @doctor_notification.notes
             },
             to: _doctor.gcmid
