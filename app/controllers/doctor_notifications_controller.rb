@@ -114,15 +114,16 @@ class DoctorNotificationsController < ApplicationController
       _doctor = @doctor_notification.doctor
       if _doctor.gcmid && _doctor.gcmid.length > 10
         url = 'https://gcm-http.googleapis.com/gcm/send'
+        title = "Notification(#{_doctor_notification.title}) of Patient: #{_doctor_notification.user.first_name} Severity: #{_doctor_notification.severity}"        
         payload = { notification: {
               title: "Notification of Patient: "+ @doctor_notification.user.first_name + " Severity: "+@doctor_notification.severity,
               text: @doctor_notification.notes
             },
             to: _doctor.gcmid
           }
-          puts JSON.generate(payload)
-          puts "key="+Rails.application.secrets.gcm_server_auth_key
-          puts JSON.generate({"Content-Type" => "application/json", :Authorization => "key="+Rails.application.secrets.gcm_server_auth_key})
+          # puts JSON.generate(payload)
+          # puts "key="+Rails.application.secrets.gcm_server_auth_key
+          # puts JSON.generate({"Content-Type" => "application/json", :Authorization => "key="+Rails.application.secrets.gcm_server_auth_key})
           resp = RestClient::Request.execute(
                  :method => :post,
                  :url => url,
