@@ -1,6 +1,6 @@
 # healthcare-server
 A rubyOnRails based web application with a small concept behind healthcare full proposal here [Proposal](https://github.com/rajagopal28/healthcare-server/blob/master/proposal.md)
-The related mobile repository can be viewed ==> [Mobile](https://github.com/rajagopal28/Jakie)
+The related mobile repository can be viewed ==> [Mobile](https://github.com/rajagopal28/Jackie)
 ## Problem at hand
 Our major objective is to create an environment that helps us be independent and be healthy. Being independent makes us feel empowered all the time. People tend to forget things more often. But when it comes to health we got to be vigilant. Diabetic people need constant attention and care when it comes to health checks and medications. Level-2 Diabetes often required periodic insulin intake to keep glucose level balanced. They should also maintain a timely and proper diet that goes hand in hand with their medication schedules. We live in a busy world where we cannot be around all the time. With that being said we can deep dive into our proposed solution.
 
