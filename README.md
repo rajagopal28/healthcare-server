@@ -31,12 +31,59 @@ Centralized web applications with ability too
 - view & create notifications for doctors
 - monitor and visualize medicine availability
 
-
 ## Technical Nuances
-- As we had to kick start with an application in a short time we chose Ruby on rails + Postgres back-end to give us a quick and stable back-end powered by Heroku infrastructure.
+As we wanted to have to quick backend setup so that we can have some time available to spent on the new technologies that are involved in the component(viz., react native, android, alexa and Aurdino devlopment) we chose Ruby On Rails and it was totally worth it.
+	* Ruby on Rails is one of the beautiful script based web frameworks, it did all the data management work setup for us with it's scaffolding generation, what a beauty. Just defining the attributes in `` rails generate scaffolding `` command generates everything to manage that particular model, it even gives rest end points in an instant. We were totally carried away by it capability to create a robust and flexible back-end in a short span.
+	* Postgres is one of the most advanced open source database management system that is as is. We chose rails as we structured the data in a most relational way. Postgres supported quick setup and easy to manage data and their relationship. Of course, rails and it's migrations have a great part as the out of the box postgres support elevated everything to a different level.
+	* Pure CSS best light weight css framework that helped us create a pretty decent looking UI views. Their approach was so simplistic that they provide on demand inclusions of styles that can be included only when needed say forms, grids and layouts , such that the site does not become heavy with elements that will not be used.
+	* Chartkick + highcharts made us drop our jaws because it is the first ever server side chart rendering framework. It was really smooth as if we are using server side tag libraries to loop through list of data. Credits to rails of cource, gems for everything that we need, really helped us save time. We used some server side capabilities to conditionally choose charts and render data in a synchronous way, really first time we have used a chart library that did not use ajax and rest call.
+	* Heroku was our first choice as it is well known for its intensive support for rails applications. Its of the box support to postgres as an out of the box add-on made us feel re-assured with our choice on postgres as our database.
+	* GCM server side support was required as part of the mobile application concept. With an additional inclusion of server side capabilities in capabilities to call external APIs such as RestClient gem helped us big time to integrate this feature in a seamless way.
 
 
-## Key Learnings=
+## Major User Flows:
+### Home:
+This is the simplistic Home UI in PureCSS with nav and everything. I know it looks kind of childish with the images we have chosen but our features are realtime and helpful.
+![Home](https://file.ac/h-50abi7Tj0/image000.PNG)
+### Users:
+![Users](https://file.ac/h-50abi7Tj0/image001.PNG)
+### Doctors:
+![Doctors](https://file.ac/h-50abi7Tj0/image002.PNG)
+### Doctor Appointments:
+![Doctor Appointments](https://file.ac/h-50abi7Tj0/image003.PNG)
+### Doctors Notifications:
+![Doctors Notifications](https://file.ac/h-50abi7Tj0/image004.PNG)
+New doctor appointments
+![Doctor appointments](https://file.ac/h-50abi7Tj0/image009.PNG)
+### Medicines:
+![Medicines](https://file.ac/h-50abi7Tj0/image006.PNG)
+### Prescribed Medicines:
+Prescribed Medicines for user
+![Prescribed Medicines](https://file.ac/h-50abi7Tj0/image010.PNG)
+Prescribed medicines edit view
+![Prescribed Medicines](https://file.ac/h-50abi7Tj0/image017.PNG)
+### In Patients:
+![In Patients](https://file.ac/h-50abi7Tj0/image005.PNG)
+### Medicine intake logs:
+Medicine intake logs deletion view
+![Medicine intake logs](https://file.ac/h-50abi7Tj0/image018.PNG)
+![Medicine intake logs](https://file.ac/h-50abi7Tj0/image019.PNG)
+### Prescriptions:
+![Prescriptions](https://file.ac/h-50abi7Tj0/image007.PNG)
+### User Vital logs:
+![User Vital logs](https://file.ac/h-50abi7Tj0/image011.PNG)
+User Vital logs with user wise grouping
+![User Vital logs](https://file.ac/h-50abi7Tj0/image012.PNG)
+User Vital logs with timeline wise grouping
+![User Vital logs](https://file.ac/h-50abi7Tj0/image013.PNG)
+![User Vital logs](https://file.ac/h-50abi7Tj0/image014.PNG)
+![User Vital logs](https://file.ac/h-50abi7Tj0/image015.PNG)
+### User vitals summary:
+![User vitals summary](https://file.ac/h-50abi7Tj0/image016.PNG)
+
+
+
+## Key Learnings
 - How to create and publish an alexa skill by leveraging the voice activated technlogies in a smooth and effective way.
 - React native is adaptive, flexible enough to let both native as well as hybrid code and features by binding them together with their coherant data flows and models.
 - Ruby on rails is the quickest script based web application framework that can be developer friendly as well as feature friendly with their ability to scale and balance.
