@@ -34,15 +34,15 @@ Following are features or capabilities that we are proposing as part of this sys
 
 
 ## Proposed architecture
-![Architecture](https://file.ac/h-50abi7Tj0/image00.png)
+![Architecture](./images/image00.png)
 This entire application has 3 essential components
 - The centralized healthcare server which holds patient data such as vital information, medicine intake logs, appointments, prescriptions etc.
 - The mobile app + wearable component - with this combo we can collect user information such as vitals, medicine intake activities, reminders on appointments and medicine intakes etc.
 - The Alexa skill - which is essentially coupled with the data back-end to personally serve people in managing their vitals, appointments and medicine intake.
-![Mobile Block](https://file.ac/h-50abi7Tj0/image01.png)
+![Mobile Block](./images/image01.png)
 
 ## Backend Schema
-![Schema](https://file.ac/h-50abi7Tj0/image02.png)
+![Schema](./images/image02.png)
 
 ## Full Disclosure
 We had a tiring long plan but we had only limited amount of time as we came to know about this opportunity at a later point in time. We have to build a prototype to demonstrate some of the features mentioned. We have not integrated with a wearable and with vital readable devices as we did not have enough time and resources. We had added all the possible features that we are targeting in the near and far future in the "What's next for Jackie" section. We will be in a stage to demo the complete prototype when we present the application in New York.
@@ -75,7 +75,7 @@ We have built this application with group of tech that comes to aid people with 
 - The mobile application we built in React Native also took a considerable amount of effort as it significantly tried to mimic real-world interactions by being close to the users in all their activities.
 - We also spend a considerable amount of time in trying to buy a wearable that can quickly help us achieve the data tracking part of the application but lack of time hit us there as well.
 - We also have a setup to build IoT capabilities for the vital recording devices such as a glucometer. We have some start but it is not so mature enough to integrate as we are a novice in electronics and micro-controller integration as well.
-![Tech Stack](https://file.ac/h-50abi7Tj0/image03.png)
+![Tech Stack](./images/image03.png)
 
 ## Accomplishments that we're proud of
 - We feel significantly proud in doing this project in a short time with a great objective to help the diabetic people in need.

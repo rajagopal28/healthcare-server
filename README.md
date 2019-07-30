@@ -9,7 +9,7 @@ The proposed solution is to have a multi-platform environment that helps you tak
 
 
 ## Proposed architecture
-![Architecture](https://file.ac/h-50abi7Tj0/image00.png)
+![Architecture](./images/image00.png)
 This entire application has 3 essential components
 - The centralized healthcare server which holds patient data such as vital information, medicine intake logs, appointments, prescriptions etc.
 - The mobile app + wearable component - with this combo we can collect user information such as vitals, medicine intake activities, reminders on appointments and medicine intakes etc.
@@ -17,7 +17,7 @@ This entire application has 3 essential components
 
 
 ## Backend Schema
-![Schema](https://file.ac/h-50abi7Tj0/image02.png)
+![Schema](./images/image02.png)
 
 
 ## Major User cases
