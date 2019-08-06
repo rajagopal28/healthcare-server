@@ -56,6 +56,6 @@ gem 'groupdate', '>= 3.2.0'
 
 gem 'rest-client'
 
-gem 'rake', '12.3.3'
+gem 'rake', '~> 10.4.2'
 
 ruby ">= 2.3.7"
