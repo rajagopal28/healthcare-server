@@ -44,42 +44,39 @@ As we wanted to have to quick backend setup so that we can have some time availa
 ## Major User Flows:
 ### Home:
 This is the simplistic Home UI in PureCSS with nav and everything. I know it looks kind of childish with the images we have chosen but our features are realtime and helpful.
-![Home](https://file.ac/h-50abi7Tj0/image000.PNG)
+![Home](./images/image000.png)
 ### Users:
-![Users](https://file.ac/h-50abi7Tj0/image001.PNG)
+![Users](./images/image001.png)
 ### Doctors:
-![Doctors](https://file.ac/h-50abi7Tj0/image002.PNG)
+![Doctors](./images/image002.png)
 ### Doctor Appointments:
-![Doctor Appointments](https://file.ac/h-50abi7Tj0/image003.PNG)
+![Doctor Appointments](./images/image003.png)
 ### Doctors Notifications:
-![Doctors Notifications](https://file.ac/h-50abi7Tj0/image004.PNG)
-New doctor appointments
-![Doctor appointments](https://file.ac/h-50abi7Tj0/image009.PNG)
+![Doctors Notifications](./images/image004.png)
+##New doctor appointments
+![Doctor appointments](./images/image009.png)
 ### Medicines:
-![Medicines](https://file.ac/h-50abi7Tj0/image006.PNG)
+![Medicines](./images/image006.png)
 ### Prescribed Medicines:
 Prescribed Medicines for user
-![Prescribed Medicines](https://file.ac/h-50abi7Tj0/image010.PNG)
+![Prescribed Medicines](./images/image010.png)
 Prescribed medicines edit view
-![Prescribed Medicines](https://file.ac/h-50abi7Tj0/image017.PNG)
+![Prescribed Medicines](./images/image017.png)
 ### In Patients:
-![In Patients](https://file.ac/h-50abi7Tj0/image005.PNG)
+![In Patients](./images/image005.png)
 ### Medicine intake logs:
+![User Vital logs](./images/image013.png)
 Medicine intake logs deletion view
-![Medicine intake logs](https://file.ac/h-50abi7Tj0/image018.PNG)
-![Medicine intake logs](https://file.ac/h-50abi7Tj0/image019.PNG)
+![Medicine intake logs](./images/image018.png)
+![Medicine intake logs](./images/image019.png)
 ### Prescriptions:
-![Prescriptions](https://file.ac/h-50abi7Tj0/image007.PNG)
+![Prescriptions](./images/image007.png)
 ### User Vital logs:
-![User Vital logs](https://file.ac/h-50abi7Tj0/image011.PNG)
+![User Vital logs](./images/image011.png)
 User Vital logs with user wise grouping
-![User Vital logs](https://file.ac/h-50abi7Tj0/image012.PNG)
-User Vital logs with timeline wise grouping
-![User Vital logs](https://file.ac/h-50abi7Tj0/image013.PNG)
-![User Vital logs](https://file.ac/h-50abi7Tj0/image014.PNG)
-![User Vital logs](https://file.ac/h-50abi7Tj0/image015.PNG)
+![User Vital logs](./images/image012.png)
 ### User vitals summary:
-![User vitals summary](https://file.ac/h-50abi7Tj0/image016.PNG)
+![User vitals summary](./images/image016.png)
 
 
 
