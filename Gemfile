@@ -58,4 +58,4 @@ gem 'rest-client'
 
 gem 'rake', '~> 12.3.3'
 
-ruby ">= 2.3.7"
+ruby ">= 3.1.0"
