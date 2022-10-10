@@ -96,3 +96,4 @@ User Vital logs with user wise grouping
 - https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
 - version/arguments mismatch issue: https://stackoverflow.com/a/69274921
 - Issue `uninitialized class variable @@schemes in URI` : https://stackoverflow.com/a/73583358
+- Release issue with db-migrate: https://stackoverflow.com/a/71192990
