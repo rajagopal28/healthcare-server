@@ -94,3 +94,4 @@ User Vital logs with user wise grouping
 - https://www.chartkick.com/
 - http://guides.rubyonrails.org/active_record_querying.html
 - https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
+- version/arguments mismatch issue: https://stackoverflow.com/a/69274921
