@@ -58,4 +58,6 @@ gem 'rest-client'
 
 gem 'rake', '~> 12.3.3'
 
+gem 'globalid', '~> 1.0'
+
 ruby ">= 3.1.0"
