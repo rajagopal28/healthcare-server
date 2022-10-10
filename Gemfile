@@ -60,4 +60,6 @@ gem 'rake', '~> 12.3.3'
 
 gem 'globalid', '~> 1.0'
 
+gem 'ransack', '~> 2.1'
+
 ruby ">= 3.1.0"
